@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Main HTML structure -->
+<html lang="de">
+<head>
+    <!-- Meta tags for mobile and charset -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bitte ein Git!">
+    <title>WOBD</title>
+    <!-- Link to stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>WOBD</h1>
+        <p>Finde den OBD-Port in deinem Auto</p>
+    </header>
+    <!-- Main content area -->
+    <main>
+        <!-- Dropdown for manufacturer -->
+        <div class="control-group">
+            <label for="manufacturer">Hersteller wählen:</label>
+            <select id="manufacturer" disabled>
+                <option value="">Lade Daten...</option>
+            </select>
+        </div>
+        <!-- Dropdown for vehicle model -->
+        <div class="control-group">
+            <label for="model">Fahrzeugmodell wählen:</label>
+            <select id="model" disabled>
+                <option value="">Bitte zuerst Hersteller wählen</option>
+            </select>
+        </div>
+        <!-- Search field for models -->
+        <div class="control-group">
+            <label for="search">Oder Modell suchen:</label>
+            <input type="text" id="search" placeholder="Modell suchen..." disabled>
+        </div>
+        <!-- Result display area -->
+        <div id="results" class="results-container"></div>
+    </main>
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2026 Bitte ein Git!</p>
+    </footer>
+    <!-- Link to script -->
+    <script src="app.js"></script>
+</body>
+</html>
