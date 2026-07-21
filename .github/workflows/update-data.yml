@@ -1,23 +1,18 @@
-# GitHub Action workflow definition
 name: Update OBD Data
 
-# Trigger workflow daily and manually
 on:
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
 
-# Define jobs
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository
       - name: Checkout repo
         uses: actions/checkout@v4
-      
-      # Fetch JSON data via curl
-      - name: Fetch JSON
+             
+      - name: Fetch OBD JSON
         run: |
           curl -X POST "https://www.obd-facile.fr/vehicle/tools/connectorv2-en.json" \
             -d "language=de" \
@@ -25,10 +20,15 @@ jobs:
             -H "User-Agent: WOBD-App/1.0" \
             > data.json
 
-      # Commit and push changes if any
+      - name: Fetch Manufacturers JSON
+        run: |
+          curl -s "https://www.klavkarr.de/include/ajax/list_marques_connecteur.php" \
+            -H "User-Agent: Mozilla/5.0" \
+            > manufacturers.json
+
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Bitte ein Git!"
-          git add data.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Update OBD data" && git push)
+          git add data.json manufacturers.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Update OBD and Manufacturer data" && git push)

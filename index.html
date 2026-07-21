@@ -1,50 +1,47 @@
 <!DOCTYPE html>
-<!-- Main HTML structure -->
 <html lang="de">
 <head>
-    <!-- Meta tags for mobile and charset -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Bitte ein Git!">
     <title>WOBD</title>
-    <!-- Link to stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS is now loaded from the assets subfolder -->
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <!-- Header section -->
     <header>
         <h1>WOBD</h1>
         <p>Finde den OBD-Port in deinem Auto</p>
     </header>
-    <!-- Main content area -->
     <main>
-        <!-- Dropdown for manufacturer -->
+        <!-- Search field at the top -->
         <div class="control-group">
-            <label for="manufacturer">Hersteller wählen:</label>
-            <select id="manufacturer" disabled>
-                <option value="">Lade Daten...</option>
-            </select>
+            <input type="text" id="search" placeholder="Modellnamen oder Hersteller direkt suchen..." disabled>
         </div>
-        <!-- Dropdown for vehicle model -->
-        <div class="control-group">
-            <label for="model">Fahrzeugmodell wählen:</label>
-            <select id="model" disabled>
-                <option value="">Bitte zuerst Hersteller wählen</option>
-            </select>
+
+        <button id="back-btn" class="hidden">Zurück zur Übersicht</button>
+
+        <!-- 3-Column Grid for Manufacturers -->
+        <div id="manufacturer-grid" class="manufacturer-grid"></div>
+
+        <!-- List of Models for selected Manufacturer -->
+        <div id="model-list-container" class="hidden">
+            <h2 id="selected-manufacturer-title"></h2>
+            <ul id="model-list" class="model-list"></ul>
         </div>
-        <!-- Search field for models -->
-        <div class="control-group">
-            <label for="search">Oder Modell suchen:</label>
-            <input type="text" id="search" placeholder="Modell suchen..." disabled>
+
+        <!-- Search Results List -->
+        <div id="search-results-container" class="hidden">
+            <h2>Suchergebnisse</h2>
+            <ul id="search-list" class="model-list"></ul>
         </div>
-        <!-- Result display area -->
+
+        <!-- Result display area for specific OBD info -->
         <div id="results" class="results-container"></div>
     </main>
-    <!-- Footer section -->
     <footer>
         <p>&copy; 2026 Bitte ein Git!</p>
     </footer>
-    <!-- Link to script -->
     <script src="app.js"></script>
 </body>
 </html>
