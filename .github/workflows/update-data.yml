@@ -28,7 +28,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "Bitte ein Git!"
+          git config --local user.email "wobd_update@heyfordy.dev"
+          git config --local user.name "[🤖• Bot] WOBD Updater"
           git add data.json manufacturers.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Update OBD and Manufacturer data" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🚀 OBD+Manufacturer data updated!" && git push)
